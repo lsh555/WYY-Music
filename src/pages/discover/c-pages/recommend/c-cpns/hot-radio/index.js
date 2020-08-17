@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import {
   hotRadios
-} from "@/common/local-data";
+} from "@/services/local-data";
 
 import HYThemeHeaderSmall from '@/components/theme-header-small';
 import {

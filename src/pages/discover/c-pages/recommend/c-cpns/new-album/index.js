@@ -1,47 +1,47 @@
-import React, { memo,useEffect,useRef } from 'react';
+import React, { useEffect, useRef, memo } from 'react';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
-import {useDispatch, useSelector, shallowEqual} from 'react-redux'
-
-import { getNewAlbumAction } from '../../store/actionCreators';
-
+import {
+  getAlbum
+} from "../../store/actionCreators";
 
 import { Carousel } from 'antd';
-import HYAlbumCover from '@/components/album-cover';
 import HYThemeHeaderRCM from '@/components/theme-header-rcm';
-import { AlbumWrapper } from './style';
+import HYAlbumCover from "@/components/album-cover";
+import {
+  AlbumWrapper
+} from "./style";
 
-export default memo(function HYNewAlbum() {
+export default memo(function HYNewAlbum(props) {
+  // redux
+  const state = useSelector(state => ({
+    newAlbum: state.getIn(["recommend", "newAlbum"])
+  }), shallowEqual);
+  const dispatch = useDispatch();
 
-  const {newAlbums} = useSelector(state =>({
-    newAlbums:state.getIn(['recommend','newAlbums'])
-  }),shallowEqual)
-  
-  const dispath = useDispatch()
-  
-  // other hooks
-  const pageRef = useRef();
-  useEffect(()=>{
-    dispath(getNewAlbumAction(10))
-  },[dispath])
+  // hooks
+  const carouselRef = useRef();
+  useEffect(() => {
+    dispatch(getAlbum());
+  }, [dispatch]);
+
   return (
     <AlbumWrapper>
-      <HYThemeHeaderRCM title="新碟上架"/>
+      <HYThemeHeaderRCM title="新碟上架" />
       <div className="content">
-        <button className="arrow arrow-left sprite_02" 
-                onClick={e => pageRef.current.prev()}></button>
+        <div className="arrow arrow-left sprite_02" 
+            onClick={e => carouselRef.current.prev()}></div>
         <div className="album">
-          <Carousel dots={false} ref={pageRef}>
+          <Carousel ref={carouselRef} dots={false}>
             {
               [0, 1].map(item => {
                 return (
                   <div key={item} className="page">
                     {
-                      newAlbums.slice(item * 5, (item + 1) * 5).map(iten => {
-                        return <HYAlbumCover key={iten.id} 
-                                             info={iten} 
-                                             size={100} 
-                                             width={118} 
-                                             bgp="-570px"/>
+                      state.newAlbum.slice(item*5, (item+1)*5).map(item => {
+                        return (
+                          <HYAlbumCover key={item.id} info={item}/>
+                        )
                       })
                     }
                   </div>
@@ -50,8 +50,8 @@ export default memo(function HYNewAlbum() {
             }
           </Carousel>
         </div>
-        <button className="arrow arrow-right sprite_02"
-                onClick={e => pageRef.current.next()}></button>
+        <div className="arrow arrow-right sprite_02"
+             onClick={e => carouselRef.current.next()}></div>
       </div>
     </AlbumWrapper>
   )

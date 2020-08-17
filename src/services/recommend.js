@@ -1,29 +1,26 @@
-import request from './request';
+import request from "./axios";
 
-export function getTopBanners() {
+export function getTopBanner() {
   return request({
     url: "/banner"
   })
 }
 
-export function getHotRecommends(limit) {
+export function getHotRecommend() {
   return request({
-    url: "/personalized",
-    params: {
-      limit
-    }
+    url: "/personalized"
   })
 }
 
-export function getNewAlbums(limit) {
+export function getNewAlbum(limit, offset) {
   return request({
     url: "/top/album",
     params: {
       limit,
+      offset
     }
   })
 }
-
 
 export function getTopList(idx) {
   return request({
@@ -33,6 +30,7 @@ export function getTopList(idx) {
     }
   })
 }
+
 
 export function getArtistList(limit, cat) {
   return request({

@@ -1,40 +1,35 @@
-import { Map } from 'immutable';
-
-//导入所有常量
+import { Map } from "immutable";
 import * as actionTypes from './constants';
 
 const defaultState = Map({
   topBanners: [],
   hotRecommends: [],
-  newAlbums: [],
+  newAlbum: [],
+  topUpList: {},
+  topNewList: {},
+  topOriginList: {},
 
-  upRanking: {},
-  newRanking: {},
-  originRanking: {},
+  settleSings: [],
+})
 
-  settleSongs: [],
-});
-
-function reducer(state = defaultState, action) {
-  switch (action.type) {
-    case actionTypes.CHANGE_TOP_BANNERS:
-      return state.set("topBanners", action.topBanners);
+export default (state = defaultState, action) => {
+  switch(action.type) {
+    case actionTypes.CHANGE_TOP_BNNAER:
+      return state.set("topBanners", action.banners);
     case actionTypes.CHANGE_HOT_RECOMMEND:
-      return state.set("hotRecommends", action.hotRecommends);
+      return state.set("hotRecommends", action.recommends);
     case actionTypes.CHANGE_NEW_ALBUM:
-      return state.set("newAlbums", action.newAlbums);
-    case actionTypes.CHANGE_UP_RANKING:
-      return state.set("upRanking", action.upRanking);
-    case actionTypes.CHANGE_NEW_RANKING:
-      return state.set("newRanking", action.newRanking);
-    case actionTypes.CHANGE_ORIGIN_RANKING:
-      return state.set("originRanking", action.originRanking);
+      return state.set("newAlbum", action.newAlbum);
+    case actionTypes.CHANGE_UP_LIST:
+      return state.set("topUpList", action.topUpList);
+    case actionTypes.CHANGE_NEW_LIST:
+      return state.set("topNewList", action.topNewList);
+    case actionTypes.CHANGE_ORIGIN_LIST:
+      return state.set("topOriginList", action.topOriginList);
     case actionTypes.CHANGE_SETTLE_SONGER:
-        return state.set("settleSongs", action.settleSongs)
+      return state.set("settleSings", action.settleSings)
     default:
       return state;
   }
 }
-
-export default reducer;
 

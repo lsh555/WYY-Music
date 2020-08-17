@@ -12,8 +12,8 @@ export const AlbumWrapper = styled.div`
     align-items: center;
 
     .arrow {
-      width: 25px;
-      height: 25px;
+      width: 30px;
+      height: 17px;
       cursor: pointer;
     }
 

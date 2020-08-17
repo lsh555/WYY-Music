@@ -3,35 +3,33 @@ import React, { memo } from 'react';
 import HYTopBanner from './c-cpns/top-banner';
 import HYHotRecommend from './c-cpns/hot-recommend';
 import HYNewAlbum from './c-cpns/new-album';
-import HYRecommendRanking from './c-cpns/recommend-ranking';
+import HYRankingList from './c-cpns/ranking-list';
 import HYUserLogin from './c-cpns/user-login';
-import HYSettleSonger from './c-cpns/settle-songer';
+import HYSettleSinger from './c-cpns/settle-singer';
 import HYHotRadio from './c-cpns/hot-radio';
-import { 
-  RecommendWrapper,
+import {
+  RecommendWraper,
   Content,
   RecommendLeft,
   RecommendRight
-} from './style';
+} from "./style";
 
-function HYRecommend(props) {
+export default memo(function HYRecommend() {
   return (
-    <RecommendWrapper>
+    <RecommendWraper>
       <HYTopBanner/>
       <Content className="wrap-v2">
         <RecommendLeft>
-          <HYHotRecommend/>
-          <HYNewAlbum/>
-          <HYRecommendRanking/>
+          <HYHotRecommend />
+          <HYNewAlbum />
+          <HYRankingList />
         </RecommendLeft>
         <RecommendRight>
-        <HYUserLogin />
-          <HYSettleSonger />
+          <HYUserLogin />
+          <HYSettleSinger />
           <HYHotRadio />
-          </RecommendRight>
+        </RecommendRight>
       </Content>
-    </RecommendWrapper>
+    </RecommendWraper>
   )
-}
-
-export default memo(HYRecommend);
+})

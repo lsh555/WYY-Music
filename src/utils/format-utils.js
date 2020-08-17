@@ -1,3 +1,7 @@
+export function getSizeImage(imgUrl, size) {
+  return `${imgUrl}?param=${size}x${size}`;
+}
+
 export function getCount(count) {
   if (count < 0) return;
   if (count < 10000) {
@@ -9,8 +13,8 @@ export function getCount(count) {
   }
 }
 
-export function getSizeImage(imgUrl, size) {
-  return `${imgUrl}?param=${size}x${size}`;
+export function getPlayUrl(id) {
+  return `https://music.163.com/song/media/outer/url?id=${id}.mp3`
 }
 
 export function formatDate(time, fmt) {
@@ -45,8 +49,4 @@ export function formatMonthDay(time) {
 
 export function formatMinuteSecond(time) {
   return formatDate(time, "mm:ss");
-}
-
-export function getPlaySong(id) {
-  return `https://music.163.com/song/media/outer/url?id=${id}.mp3`;
 }

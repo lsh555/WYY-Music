@@ -1,7 +1,9 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+import React, {memo} from 'react';
+import PropTypes from "prop-types";
 
-import { HeaderWrapper } from './style';
+import {
+  HeaderWrapper
+} from "./style";
 
 const HYThemeHeaderRCM = memo(function(props) {
   const { title, keywords } = props;
@@ -12,10 +14,10 @@ const HYThemeHeaderRCM = memo(function(props) {
         <h3 className="title">{title}</h3>
         <div className="keyword">
           {
-            keywords.map((item, index) => {
+            keywords.map((item) => {
               return (
                 <div className="item" key={item}>
-                  <a href="todo">{item}</a>
+                  <a href="/todo">{item}</a>
                   <span className="divider">|</span>
                 </div>
               )
@@ -31,13 +33,13 @@ const HYThemeHeaderRCM = memo(function(props) {
   )
 })
 
+HYThemeHeaderRCM.defaultProps = {
+  keywords: []
+}
+
 HYThemeHeaderRCM.propTypes = {
   title: PropTypes.string.isRequired,
   keywords: PropTypes.array
-}
-
-HYThemeHeaderRCM.defaultProps = {
-  keywords: []
 }
 
 export default HYThemeHeaderRCM;

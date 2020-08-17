@@ -1,5 +1,9 @@
 import React, { memo } from 'react';
 
+import HYPlayerInfo from './c-cpns/player-info';
+import HYPlayerComment from './c-cpns/player-comment';
+import HYPlayerSongs from './c-cpns/player-songs';
+import HYPlayerRelevant from './c-cpns/player-relevant';
 import {
   PlayerWrapper,
   PlayerLeft,
@@ -11,13 +15,12 @@ export default memo(function HYPlayer() {
     <PlayerWrapper>
       <div className="content wrap-v2">
         <PlayerLeft>
-          <h2>HYPlayerInfo</h2>
-          <h2>HYSongContent</h2>
+          <HYPlayerInfo/>
+          <HYPlayerComment/>
         </PlayerLeft>
         <PlayerRight>
-          <h2>HYSimiPlaylist</h2>
-          <h2>HYSimiSong</h2>
-          <h2>Download</h2>
+          <HYPlayerSongs/>
+          <HYPlayerRelevant/>
         </PlayerRight>
       </div>
     </PlayerWrapper>

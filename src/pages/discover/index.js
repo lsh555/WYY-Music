@@ -1,23 +1,22 @@
-import React, { memo } from 'react';
-//子路由渲染
-import { renderRoutes } from 'react-router-config';
+import React, {memo} from 'react';
+import { NavLink } from "react-router-dom";
+import { renderRoutes } from "react-router-config";
 
-import { dicoverMenu } from "@/common/local-data";
-
-import { NavLink } from 'react-router-dom';
+import { 
+  dicoverMenu
+} from "@/services/local-data";
 
 import {
   DiscoverWrapper,
   TopMenu
-} from './style';
+} from "./style";
 
-export default memo(function LSHDiscover(props) {
-  // 子路由渲染
+export default memo(function HYDiscover(props) {
   const { route } = props;
 
   return (
     <DiscoverWrapper>
-       <div className="top">
+      <div className="top">
         <TopMenu className="wrap-v1">
           {
             dicoverMenu.map((item, index) => {
@@ -25,7 +24,7 @@ export default memo(function LSHDiscover(props) {
                 <div className="item" key={item.title}>
                   <NavLink to={item.link}>{item.title}</NavLink>
                 </div>
-              )
+              );
             })
           }
         </TopMenu>
@@ -34,4 +33,3 @@ export default memo(function LSHDiscover(props) {
     </DiscoverWrapper>
   )
 })
-
